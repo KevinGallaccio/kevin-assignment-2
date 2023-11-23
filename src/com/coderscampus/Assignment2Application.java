@@ -26,9 +26,11 @@ public class Assignment2Application {
 			if (userInput < 1 || userInput > 100) {
 				System.out.println("Your guess is not between 1 and 100, please try again");
 			} else {
-				if (remainingGuesses == 0) {
+				if (remainingGuesses == 0 && userInput != numberToGuess) {
+					System.out.println("You Lose! The number was " + numberToGuess);
 					break;
-					} if (userInput < numberToGuess) {
+				}
+				if (userInput < numberToGuess) {
 					System.out.println("Pick a higher number, you have " + remainingGuesses + " guess"
 							+ (remainingGuesses == 1 ? "" : "es") + " left");
 				} else if (userInput > numberToGuess) {
@@ -41,11 +43,6 @@ public class Assignment2Application {
 				numberOfGuesses++;
 			}
 		}
-
-		if (userInput != numberToGuess) {
-			System.out.println("You Lose! The number was " + numberToGuess);
-		}
-
 		scanner.close();
 	}
 }

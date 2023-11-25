@@ -7,40 +7,40 @@ public class Assignment2Application {
 
 	public static void main(String[] args) {
 
+		 String reset = "\u001B[0m";
+	     String red = "\u001B[31m";
+	     String green = "\u001B[32m";
+
+
 		Random random = new Random();
-		int numberToGuess = random.nextInt(1, 101);
+		int numberToGuess = random.nextInt(100) + 1;
 
 		Scanner scanner = new Scanner(System.in);
 		int userInput = 0;
-
-		System.out.println("Pick a number between 1 and 100: (random:" + numberToGuess + ")");
-
-		int numberOfGuesses = 0;
+		int userGuesses = 0;
 		int maxNumberOfGuesses = 5;
+		
+		System.out.println("Pick a number between 1 and 100 (you have " + red +  maxNumberOfGuesses + reset + " guesses):");
+//		System.out.println(green + " // the number to guess is: " + numberToGuess );
 
-		while (numberOfGuesses < maxNumberOfGuesses) {
-			int remainingGuesses = maxNumberOfGuesses - numberOfGuesses - 1;
-
+		while (userGuesses < maxNumberOfGuesses) {
 			userInput = scanner.nextInt();
-
+			int guessesLeft = (maxNumberOfGuesses - userGuesses) - 1;
 			if (userInput < 1 || userInput > 100) {
-				System.out.println("Your guess is not between 1 and 100, please try again");
+				System.out.println(red + "Your guess is not between 1 and 100, please try again" + reset);
+			} else if (userInput == numberToGuess) {
+				System.out.println(green + "You win!" + reset);
+				break;
+			} else if (guessesLeft == 0 && userInput != numberToGuess) {
+				System.out.println("You lose, the number to guess was: " + red + numberToGuess + reset);
+				break;
 			} else {
-				if (remainingGuesses == 0 && userInput != numberToGuess) {
-					System.out.println("You Lose! The number was " + numberToGuess);
-					break;
-				}
 				if (userInput < numberToGuess) {
-					System.out.println("Pick a higher number, you have " + remainingGuesses + " guess"
-							+ (remainingGuesses == 1 ? "" : "es") + " left");
+					System.out.println("Please pick a higher number, you have " + red + guessesLeft + reset + " guess" + (guessesLeft == 1 ? "" : "es" ) + " left: ");
 				} else if (userInput > numberToGuess) {
-					System.out.println("Pick a lower number, you have " + remainingGuesses + " guess"
-							+ (remainingGuesses == 1 ? "" : "es") + " left");
-				} else {
-					System.out.println("You Win!");
-					break;
+					System.out.println("Please pick a lower number, you have " + red + guessesLeft + reset + " guess" + (guessesLeft == 1 ? "" : "es" ) + " left: ");
 				}
-				numberOfGuesses++;
+				userGuesses++;
 			}
 		}
 		scanner.close();

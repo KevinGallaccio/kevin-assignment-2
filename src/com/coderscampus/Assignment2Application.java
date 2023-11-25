@@ -7,10 +7,10 @@ public class Assignment2Application {
 
 	public static void main(String[] args) {
 
-		 String reset = "\u001B[0m";
-	     String red = "\u001B[31m";
-	     String green = "\u001B[32m";
-
+		String reset = "\u001B[0m";
+		String red = "\u001B[31m";
+		String green = "\u001B[32m";
+		String purple = "\u001B[35m";
 
 		Random random = new Random();
 		int numberToGuess = random.nextInt(100) + 1;
@@ -19,9 +19,10 @@ public class Assignment2Application {
 		int userInput = 0;
 		int userGuesses = 0;
 		int maxNumberOfGuesses = 5;
-		
-		System.out.println("Pick a number between 1 and 100 (you have a total of " + red +  maxNumberOfGuesses + reset + " guesses):");
-//		System.out.println(green + " // the number to guess is: " + numberToGuess );
+
+		System.out.println("Pick a number between 1 and 100 (you have a total of " + red + maxNumberOfGuesses + reset
+				+ " guesses):");
+//		System.out.println(purple + " // the number to guess is: " + numberToGuess + reset);
 
 		while (userGuesses < maxNumberOfGuesses) {
 			userInput = scanner.nextInt();
@@ -36,9 +37,11 @@ public class Assignment2Application {
 				break;
 			} else {
 				if (userInput < numberToGuess) {
-					System.out.println("Please pick a higher number, you have " + red + guessesLeft + reset + " guess" + (guessesLeft == 1 ? "" : "es" ) + " left: ");
+					System.out.println("Please pick a higher number, you have " + red + guessesLeft + reset + " guess"
+							+ (guessesLeft == 1 ? "" : "es") + " left: ");
 				} else if (userInput > numberToGuess) {
-					System.out.println("Please pick a lower number, you have " + red + guessesLeft + reset + " guess" + (guessesLeft == 1 ? "" : "es" ) + " left: ");
+					System.out.println("Please pick a lower number, you have " + red + guessesLeft + reset + " guess"
+							+ (guessesLeft == 1 ? "" : "es") + " left: ");
 				}
 				userGuesses++;
 			}

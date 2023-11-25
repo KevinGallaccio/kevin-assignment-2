@@ -20,7 +20,7 @@ public class Assignment2Application {
 		int userGuesses = 0;
 		int maxNumberOfGuesses = 5;
 		
-		System.out.println("Pick a number between 1 and 100 (you have " + red +  maxNumberOfGuesses + reset + " guesses):");
+		System.out.println("Pick a number between 1 and 100 (you have a total of " + red +  maxNumberOfGuesses + reset + " guesses):");
 //		System.out.println(green + " // the number to guess is: " + numberToGuess );
 
 		while (userGuesses < maxNumberOfGuesses) {
